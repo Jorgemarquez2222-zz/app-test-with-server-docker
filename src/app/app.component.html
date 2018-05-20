@@ -1,0 +1,76 @@
+<div class="contaienr">
+<div class="row">
+  <div class="col s6">
+    <div class="container">
+    <h5>Users</h5>
+
+      <div  style="cursor:pointer; width:100%; border:1px solid #ddd; display:flex; justify-content:space-around; flex-flow:wrap; ">
+        <div *ngFor="let user of users" style="width:45%; " class="center-align card-panel teal hoverable waves-effect" (click)="optenerUser(user)">
+          <span class="white-text" >{{user.nombre}}
+          </span>        
+        </div>
+    </div>
+  </div>
+</div>
+  <div class="col s6">
+    <div class="container">
+    <div class="row">
+      <div class=" col s6">
+          <label class="" for="first_name2">Nombre</label>
+        <input id="first_name2" type="text" class="validate" [(ngModel)]="userEdit.nombre" >
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class=" col s6">
+          <label class="" for="first_name2">Edad</label>
+        <input id="first_name2" type="text" class="" [(ngModel)]="userEdit.edad">
+       
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+          <label class="" for="first_name2">Genero</label>
+        <input id="first_name2" type="text" class="validate" [(ngModel)]="userEdit.genero">
+       
+      </div>
+    </div>
+
+    <a class="waves-effect waves-light btn" (click)="guardarUser()"><i class="material-icons right">cloud</i>Modificar</a>
+    <a class="waves-effect red waves-light btn" (click)="eliminarUser()"><i class="material-icons right">delete</i>Eliminar</a>
+  </div>
+</div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large modal-trigger waves-effect waves-light"  href="#modal1">
+      <i class="large material-icons">add</i>
+    </a>
+  
+  </div>
+</div>
+
+
+  <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+      <div class="modal-content center">
+        <h4>Agregar nuevo usuario</h4>
+          <div class="row">
+            <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+              <div formGroupName="user">
+                <label>Nombre:</label>
+                <input type="text" name="nombre"  formControlName="nombre">
+                <label>Edad:</label>
+                <input type="text" name="edad" formControlName="edad">
+                <label>Genero:</label>
+                <input type="text" name="genero" formControlName="genero">
+              </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="right" style="padding: 5px; ">   
+        <a  class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>              
+        <a class="waves-effect modal-close waves-light btn-flat" (click)="agregarUser()"><i class="material-icons right">cloud</i>Agregar</a>
+      </div>
+    </div>
